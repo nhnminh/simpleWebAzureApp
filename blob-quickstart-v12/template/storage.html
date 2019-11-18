@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FlaskDrive</title>
+  </head>
+  <body>
+    <div class="content">
+        <h3>Flask Drive: Azure Flask Demo</h3>
+        <p>Welcome to this Azure Storage Demo</p>
+        <div>
+          <h3>Upload your file here:</h3>
+          <form method="POST" action="/upload" enctype=multipart/form-data>
+            <input type=file name=file>
+            <input type=submit value=Upload>
+          </form>
+        </div>
+        </br>
+        </br>
+        <div>
+          <p>
+            {{content}}
+          </p>
+        </div>
+    </div>
+  </body>
+</html>
