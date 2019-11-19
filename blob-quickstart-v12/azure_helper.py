@@ -14,7 +14,7 @@ def upload_file(file_name, blob_service_client, container_name):
 
     # Upload the created file
     with open(file_name, "rb") as data:
-        blob_client.upload_blob(data)
+        blob_client.upload_blob(data, overwrite = True)
 
     return blob_client
 

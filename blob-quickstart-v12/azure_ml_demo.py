@@ -27,14 +27,15 @@ headers = {
 }
 
 # Build the data json for the request
-data = {"Url": base_image_url + "uploads/514534.jpg" }
+data = {"Url": base_image_url + "photos/uploads/1.jpg" }
 url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/298ee833-267d-4feb-bfe0-d28fb07bec17/classify/iterations/CPU_GPU/url"
 # Build and send a POST request
 response = requests.post(url, headers=headers, data=data)
 response = response.json()
-
+print(response)
 if 'project' in response:
     for pred in response['predictions']:
         print("class: {}, probability: {}".format(pred['tagName'], pred['probability']))
 else:
     print(response)
+

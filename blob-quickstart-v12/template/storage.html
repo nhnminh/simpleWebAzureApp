@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FlaskDrive</title>
+    <title>Assets' Model Prediction</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="content">
-        <h3>Flask Drive: Azure Flask Demo</h3>
-        <p>Welcome to this Azure Storage Demo</p>
+    <div>
+        <h3>Assets Management</h3>
+        <p>Welcome to this Asset Manangement Application<br> 
+          Please upload your photo to know what it is</p>
         <div>
           <h3>Upload your file here:</h3>
-          <form method="POST" action="/upload" enctype=multipart/form-data>
-            <input type=file name=file>
-            <input type=submit value=Upload>
-          </form>
+          <form class="md-form" method="POST" action="/upload" enctype=multipart/form-data >
+              <div class="file-field">
+                <div class="btn btn-primary btn-sm float-left">
+                  <!-- <span>Choose file</span> -->
+                  <input type="file" name = "file">
+                </div>
+                <input type=submit value=Upload class = "btn btn-primary">
+              </div>
+            </form>
         </div>
         </br>
         </br>
-        <div>
-          <p>
-            {{content}}
-          </p>
-        </div>
+
+        <div class="card" style="width: 30vw;">
+            <img class="card-img-top" src={{url_img}} style="max-width:400px;">
+            <div class="card-body">
+              <p class="card-text">
+                  <ol>
+                      {%for i in range(0, len)%}
+                        <li>{{contents[i]}}</li>
+                      {%endfor%}
+                    </ol>
+              </p>
+            </div>
+          </div>
     </div>
   </body>
 </html>

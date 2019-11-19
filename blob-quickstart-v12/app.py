@@ -34,6 +34,7 @@ FULL_URL = url_pref + container_name
 
 # Open cmd on windows, use this command to import connection_string on Windows :
 # setx CONNECT_STR "<yourconnectionstring>"
+# DefaultEndpointsProtocol=https;AccountName=productphotosml;AccountKey=xt0qXBrEvUJnqODPADduAadtVLB75mhHi34AW36EWqxKnLylwHkmqbX6HclkWKheKpo7TUGafWxJ4wIZGW4Ffg==;EndpointSuffix=core.windows.net
 connect_str = os.getenv('CONNECT_STR')
 # Create the BlobServiceClient object which will be used to create a container client
 blob_service_client = BlobServiceClient.from_connection_string(connect_str)
@@ -46,7 +47,8 @@ def entry_point():
 @app.route("/storage")
 def storage():
     contents = "Hello World!"
-    return render_template('storage.html', contents=contents)
+    len = 0
+    return render_template('storage.html', contents=contents, len = len, url_img = "https://www.educadictos.com/wp-content/uploads/2018/08/Sin-t%C3%ADtulo-1.jpg")
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -54,8 +56,9 @@ def upload():
         f = request.files['file']
         f.save(os.path.join(UPLOAD_FOLDER, f.filename))
         upload_file(f"uploads/{f.filename}", blob_service_client, container_name)
-        output = sendAPI(f.filename, url_prediction_api)
-        return render_template('storage.html', contents=output)
+        result = sendAPI(f.filename, url_prediction_api)
+        print(result)
+        return render_template('storage.html', contents=result, len = len(result), url_img = base_image_url + "photos/uploads/" + f.filename )
 
 
 def showPref(filenae):
@@ -65,19 +68,20 @@ def showPref(filenae):
 
 
 def sendAPI(filename, url_prediction_api):
-    if request.method == 'GET':
         # Build the header json for the request
         headers = {
         "Prediction-key": prediction_key
         } 
         # Build the data json for the request
-        data = {"Url": base_image_url + "uploads/" + filename }
+        data = {"Url": base_image_url + "photos/uploads/" + filename }
         # Build and send a POST request
         response = requests.post(url_prediction_api, headers=headers, data=data)
         response = response.json()
-        if 'project' in response:
+        print(response)
+        result = []
+        if 'project' in response:    
             for pred in response['predictions']:
-                result = "class: {}, probability: {}".format(pred['tagName'], pred['probability'])
+                result.append("class: {}, probability: {}".format(pred['tagName'], pred['probability']))
                 print("class: {}, probability: {}".format(pred['tagName'], pred['probability']))
         else:
             result = response
