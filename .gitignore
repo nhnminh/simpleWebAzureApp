@@ -1,8 +1,8 @@
-blob-quickstart-v12/data/*
-blob-quickstart-v12/Pipfile
-blob-quickstart-v12/Pipfile.lock
-blob-quickstart-v12/azure_demo.py
-blob-quickstart-v12/azure_ml_demo.py
-blob-quickstart-v12/notebook.ipynb
-blob-quickstart-v12/uploads/*
-blob-quickstart-v12/test/*
+data/*
+Pipfile
+Pipfile.lock
+azure_demo.py
+azure_ml_demo.py
+notebook.ipynb
+uploads/*
+test/*
