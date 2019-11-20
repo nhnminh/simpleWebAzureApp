@@ -4,5 +4,4 @@ Pipfile.lock
 azure_demo.py
 azure_ml_demo.py
 notebook.ipynb
-uploads/*
 test/*
