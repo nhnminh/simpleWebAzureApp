@@ -13,14 +13,16 @@ prediction_key = "7a90d11ea95f459f90a036311e77c873"
 prediction_resource_id = "/subscriptions/3e6e9dd4-8cdd-4597-ab81-eedb735ec18f/resourceGroups/machinelearning/providers/Microsoft.CognitiveServices/accounts/resource_cv"
 projectid = "298ee833-267d-4feb-bfe0-d28fb07bec17"
 publish_iteration_name = "CPU_GPU"
-base_image_url = "https://productphotosml.blob.core.windows.net/"
+base_image_url = "https://assetsmanagementse.blob.core.windows.net/"
+# base_image_url = "https://productphotosml.blob.core.windows.net/"
 url_prediction_api = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/298ee833-267d-4feb-bfe0-d28fb07bec17/classify/iterations/CPU_GPU/url"
 
 # params for Azure storage
 app = Flask(__name__, template_folder='template')
 UPLOAD_FOLDER = "uploads"
 container_name = "photos"
-url_pref = "https://productphotosml.blob.core.windows.net/"
+# url_pref = "https://productphotosml.blob.core.windows.net/"
+url_pref = "https://assetsmanagementse.blob.core.windows.net/"
 FULL_URL = url_pref + container_name
 
 
@@ -35,7 +37,8 @@ FULL_URL = url_pref + container_name
 # Open cmd on windows, use this command to import connection_string on Windows :
 # setx CONNECT_STR "<yourconnectionstring>"
 # DefaultEndpointsProtocol=https;AccountName=productphotosml;AccountKey=xt0qXBrEvUJnqODPADduAadtVLB75mhHi34AW36EWqxKnLylwHkmqbX6HclkWKheKpo7TUGafWxJ4wIZGW4Ffg==;EndpointSuffix=core.windows.net
-connect_str = os.getenv('CONNECT_STR')
+# connect_str = os.getenv('CONNECT_STR')
+connect_str = "DefaultEndpointsProtocol=https;AccountName=assetsmanagementse;AccountKey=YfcYA/mLFk/nNfykjKwaZf+7TCHsOIO2A087NfOOa0JBHFRFuyJEKb87tQHpBgX8qBz+jtbGhsC6GyTW9Cx9hQ==;EndpointSuffix=core.windows.net"
 # Create the BlobServiceClient object which will be used to create a container client
 blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
