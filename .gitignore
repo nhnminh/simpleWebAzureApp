@@ -5,3 +5,7 @@ azure_demo.py
 azure_ml_demo.py
 notebook.ipynb
 test/*
+.env
+uploads/*
+*.pyc
+__pycache__/*.pyc
