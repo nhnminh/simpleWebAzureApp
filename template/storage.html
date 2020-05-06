@@ -3,32 +3,58 @@
   <head>
     <title>Assets' Model Prediction</title>
     <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static',filename='styles/assets/demo.css') }}">
+    <link rel="stylesheet" type = "text/css"  href="{{ url_for('static',filename='styles/assets/header-basic-light.css') }}">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div>
-        <h3>Assets Management</h3>
+
+    <header class="header-basic-light">
+      <div class="header-limiter">
+        <h1><a href="#">Assets <span>Management</span></a></h1>
+        <img src="./static/se-logo.png" alt="arrow" height="50">
+      </div>
+
+    </header>
+
+
+    
+      
+    
+
+    <div class = "body-div">
+      <h1>ASSETS MANAGEMENT</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8 center-align">
         <p>Welcome to this Asset Manangement Application<br> 
           Please upload your photo to know what it is</p>
-        <div>
           <h3>Upload your file here:</h3>
           <form class="md-form" method="POST" action="/upload" enctype=multipart/form-data >
               <div class="file-field">
-                <div class="btn btn-primary btn-sm float-left">
+                <!-- <div class="btn btn-primary btn-sm float-left"> -->
                   <!-- <span>Choose file</span> -->
                   <input type="file" name = "file">
-                </div>
+                <!-- </div> -->
                 <input type=submit value=Upload class = "btn btn-primary">
               </div>
             </form>
         </div>
-        </br>
-        </br>
-
-        <div class="card" style="width: 30vw;">
+        <div class="col-sm-2">
+        </div>
+      </div>
+    </br>
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-6">
+          <div class="card" style="width: 30vw;">
             <img class="card-img-top" src={{url_img}} style="max-width:400px;">
             <div class="card-body">
               <p class="card-text">
@@ -40,6 +66,15 @@
               </p>
             </div>
           </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
     </div>
+    
+        </br>
+        </br>
+
+        
+    
   </body>
 </html>
